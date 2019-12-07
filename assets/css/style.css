@@ -1,0 +1,33 @@
+/*TODO BASIC*/
+.position {
+    max-width: 1620px;
+    margin: auto;
+}
+
+/*BASIC END*/
+
+
+/*TODO HALL*/
+.halls__content {
+    text-align: center;
+}
+
+.halls__content_margin {
+    margin-top: 50px;
+}
+
+.halls__content img {
+    width: 20px;
+}
+
+.hall {
+    display: grid;
+    grid-template-columns: repeat(10, 20px);
+    justify-content: center;
+    justify-items: center;
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+    margin-bottom: 10px;
+}
+
+/*HALL END*/
