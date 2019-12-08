@@ -17,8 +17,9 @@
             <p>Зал №<?= $hall['id'] ?></p>
             <p>Количество свободных мест:</p><p class="available"><?= $place_available[$key] ?></p>
             <div class="hall">
-                <? for ($i = 0; $i < $hall['count_place']; $i++): ?>
+                <? for ($i = 1; $i < $hall['count_place']; $i++): ?>
                     <img class="hall__place" src="assets/img/svg/chair_<?= $hall['hall'][$i]['status'] ?>.svg"
+
                          alt="<?= $i ?>" data-id="<?= $hall['id'] ?>" data-status="<?= $hall['hall'][$i]['status'] ?>">
                 <? endfor; ?>
             </div>

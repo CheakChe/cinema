@@ -5,6 +5,7 @@ class Base
 {
     public function __construct()
     {
+        //Начало сессии
         session_start();
         //Конфигурационный файл — содержит  настройки БД
         $_SESSION['DB'] = parse_ini_file('DB.ini');

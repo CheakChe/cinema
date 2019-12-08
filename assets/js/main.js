@@ -1,6 +1,6 @@
 const place = document.querySelectorAll('.hall__place');
 const message = document.getElementsByClassName('message')[0];
-const num = document.getElementsByClassName('num')[0];
+const available = document.getElementsByClassName('available')[0];
 
 place.forEach(e => {
     e.addEventListener('click', function () {
@@ -13,38 +13,24 @@ place.forEach(e => {
                 url: "/assets/php/PlaceController.php",
                 data: {status: status, id: id, hall_id: hall_id},
                 success: function (data) {
-                    for (let i = 0; i < data.length; i++) {
-                        alert(data[i]);
-                    }
-                    e.setAttribute('data-status', data);
+                    e.setAttribute('data-status', JSON.parse(data).statufs);
                     img_place(e.getAttribute('data-status'), e);
+                    append(available, JSON.parse(data).available);
                 },
             });
         } else {
-            message.append('Место занято');
-            setTimeout(() => message.innerHTML = '', 2000);
+            append(message, 'Место занято', 'true');
         }
     });
-    // e.addEventListener('click', function () {
-    //     if(e.getAttribute('data-status') === '1') {
-    //         e.setAttribute('data-status', '2');
-    //         img_place(e.getAttribute('data-status'), e);
-    //     }else {
-    //         message.append('Место занято');
-    //         setTimeout(() => message.innerHTML = '', 2000);
-    //     }
-    // });
-    // e.addEventListener('dblclick', function () {
-    //     if(e.getAttribute('data-status') === '2') {
-    //         e.setAttribute('data-status', '1');
-    //         img_place(e.getAttribute('data-status'), e);
-    //     }else {
-    //         message.append('Место уже свободно');
-    //         setTimeout(() => message.innerHTML = '', 2000);
-    //     }
-    // })
 });
 
 function img_place(status, e) {
     e.setAttribute('src', 'assets/img/svg/chair_' + status + '.svg');
+}
+
+function append(elem, text, setTime = '') {
+    elem.innerHTML = '';
+    elem.append(text);
+    if (setTime != '')
+        setTimeout(() => elem.innerHTML = '', 2000);
 }
