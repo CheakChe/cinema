@@ -25,13 +25,16 @@ class PlaceController
                 $DB->prepare("
                     UPDATE `hall` SET `status`=? 
                     WHERE `place`=? AND `hall_id`=?")->execute([$_POST['status'], $_POST['id'], $_POST['hall_id']]);
-                $places = $DB->query("SELECT COUNT(`hall_id`) FROM `hall` WHERE `hall_id`={$_POST['hall_id']} AND `status`='1'");
+                $places = $DB->query("SELECT COUNT(`place`) FROM `hall` WHERE `hall_id`={$_POST['hall_id']} AND `status`='1' ORDER BY `id`");
+                foreach ($places->fetchAll(PDO::FETCH_ASSOC) as $ke) {
+                    var_dump($ke);
+                }
                 $place_available = $places->fetchAll(PDO::FETCH_NUM)[0][0];
             } catch (PDOException $exception) {
                 throw new MyDatabaseException($exception->getMessage(), (int)$exception->getCode());
             }
         }
-        echo(json_encode(['statufs' => $_POST['status'], 'available' => $place_available]));
+        echo(json_encode(['status' => $_POST['status'], 'available' => $place_available]));
     }
 }
 

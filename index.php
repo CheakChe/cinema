@@ -22,10 +22,11 @@ class Base
         //Находим и получаем залы кинотеатра
         $halls = $DB->query("SELECT *  FROM `halls` WHERE `active`='1'");
         $halls = $halls->fetchAll(PDO::FETCH_ASSOC);
-
         foreach ($halls as $key => $hall) {
+            $key_hall = $key + 1;
             //Создаем в массиве залов подмассив со списом мест
             $halls[$key]['hall'] = $DB->query("SELECT `place`, `status` FROM `hall` WHERE `hall_id`={$hall['id']}");
+//            Проблема с нумерацией места в зале!!!!!!!
             $halls[$key]['hall'] = $halls[$key]['hall']->fetchAll(PDO::FETCH_ASSOC);
 
             //Получаем количество мест каждого зала
