@@ -20,7 +20,7 @@
     width: 20px;
 }
 
-.hall {
+.hall__places {
     display: grid;
     grid-template-columns: repeat(10, 20px);
     justify-content: center;

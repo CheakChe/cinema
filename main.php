@@ -12,16 +12,23 @@
 <body>
 <div class="halls">
     <div class="halls__content halls__content_margin position">
-        <p class="message"></p>
         <? foreach ($halls as $key => $hall): ?>
-            <p>Зал №<?= $hall['id'] ?></p>
-            <p>Количество свободных мест:</p><p class="available"><?= $place_available[$key] ?></p>
-            <div class="hall">
-                <? for ($i = 0; $i < $hall['count_place']; $i++): ?>
-                    <img class="hall__place" src="assets/img/svg/chair_<?= $hall['hall'][$i]['status'] ?>.svg"
+            <div class="hall" data-hall="<?= $hall['id'] ?>">
+                <p class="message_<?= $hall['id'] ?>"></p>
+                <p>Зал №<?= $hall['id'] ?></p>
+                <? if ($place_available[$key] != '0'): ?>
+                    <p class="count-place_<?= $hall['id'] ?>">Количество свободных мест:</p><p
+                            class="available_<?= $hall['id'] ?>"><?= $place_available[$key] ?></p>
+                <? else: ?>
+                    <p>Свободных мест нет!</p>
+                <? endif; ?>
+                <div class="hall__places">
+                    <? for ($i = 0; $i < $hall['count_place']; $i++): ?>
+                        <img class="hall__place" src="assets/img/svg/chair_<?= $hall['hall'][$i]['status'] ?>.svg"
 
-                         alt="<?= $i ?>" data-id="<?= $hall['id'] ?>" data-status="<?= $hall['hall'][$i]['status'] ?>">
-                <? endfor; ?>
+                             alt="<?= $i ?>" data-id="<?= $hall['id'] ?>" data-status="<?= $hall['hall'][$i]['status'] ?>">
+                    <? endfor; ?>
+                </div>
             </div>
         <? endforeach; ?>
     </div>

@@ -1,26 +1,37 @@
 const place = document.querySelectorAll('.hall__place');
-const message = document.getElementsByClassName('message')[0];
-const available = document.getElementsByClassName('available')[0];
+const hall = document.querySelectorAll('.hall');
 
 place.forEach(e => {
     e.addEventListener('click', function () {
         let status = e.getAttribute('data-status');
+        let hall_id = e.getAttribute('data-id');
+        const count_place = document.getElementsByClassName('count-place_' + hall_id)[0];
+        let available = document.getElementsByClassName('available_' + hall_id)[0];
+        let message = document.getElementsByClassName('message_' + hall_id)[0];
+
         if (status == '1') {
-            let formData = new FormData();
-            formData.append("status", status);
-            formData.append("id", e.getAttribute('alt'));
-            formData.append("hall_id", e.getAttribute('data-id'));
+            let json = JSON.stringify({
+                status: status,
+                id: e.getAttribute('alt'),
+                hall_id: hall_id
+            });
 
             let xhr = new XMLHttpRequest();
             xhr.open("POST", "/assets/php/PlaceController.php");
-            xhr.send(formData);
+            xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+            xhr.responseType = 'json';
+            xhr.send(json);
 
             xhr.onload = function () {
                 if (xhr.status === 200) {
-                    console.log(xhr.response);
-                    e.setAttribute('data-status', JSON.parse(xhr.response).status);
+                    e.setAttribute('data-status', xhr.response.status);
                     img_place(e.getAttribute('data-status'), e);
-                    append(available, JSON.parse(xhr.response).available);
+                    if (xhr.response.available != '0')
+                        append(available, xhr.response.available);
+                    else {
+                        count_place.innerHTML = 'Свободных мест нет!';
+                        available.style.display = 'none';
+                    }
                 } else console.log(`Проихошла ошибка: ${xhr.status} ${xhr.statusText}`);
             };
             xhr.onerror = function () {
