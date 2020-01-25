@@ -5,7 +5,6 @@ class Base
 {
     public function __construct()
     {
-        //Вiтаю
         //Начало сессии
         session_start();
         //Конфигурационный файл — содержит  настройки БД
