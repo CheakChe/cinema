@@ -17,7 +17,7 @@ place.forEach(e => {
             });
 
             let xhr = new XMLHttpRequest();
-            xhr.open("POST", "/assets/php/PlaceController.php");
+            xhr.open("POST", "/assets/php/Place.php");
             xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
             xhr.responseType = 'json';
             xhr.send(json);
