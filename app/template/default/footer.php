@@ -1,6 +1,8 @@
 <footer>
 
 </footer>
-<script src="/app/public/js/main.js"></script>
+<? foreach ($var['scripts'] as $key => $script): ?>
+    <script src="/app/public/js/<?= $script ?>.js"></script>
+<? endforeach; ?>
 </body>
 </html>

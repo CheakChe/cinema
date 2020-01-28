@@ -16,6 +16,13 @@ class Router
         $this->url = explode('/', $_SERVER['REQUEST_URI']);
     }
 
+    function index()
+    {
+        $this->router('/', 'Hall');
+
+        $this->router('/ajax/hall/place', 'Hall', 'place');
+    }
+
     static function render($template, $var = NULL)
     {
         if (file_exists('app/template/' . $template . '.php')) {
@@ -27,21 +34,21 @@ class Router
         }
     }
 
-    function index()
-    {
-        $this->router('hall', 'Hall', 'ff');
-
-    }
-
     private function router($url = '/', $class = 'index', $method = 'index', $vars = NULL)
     {
-        if ($this->url[1] == $url) {
-            $basic = new Basic($this->db);
-            $basic = $basic->index();
+        if ($_SERVER['REQUEST_URI'] == $url) {
             $class = 'App\\Components\\' . $class . '\\' . $class;
-            $class = new $class($this->db);
-            $class = $class->$method($vars);
-            $this->view([$basic, $class]);
+
+            if ($this->url[1] == 'ajax') {
+                $class = new $class($this->db);
+                $class->$method($vars);
+            } else {
+                $basic = new Basic($this->db);
+                $basic = $basic->index();
+                $class = new $class($this->db);
+                $class = $class->$method($vars);
+                $this->view([$basic, $class]);
+            }
         }
     }
 

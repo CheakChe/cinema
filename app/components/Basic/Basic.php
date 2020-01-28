@@ -16,7 +16,6 @@ class Basic
 
     public function index()
     {
-
         $data['header'] = Router::render('default/header',
             ['title' => 'My page',
                 'styles' => [

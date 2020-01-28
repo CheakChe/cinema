@@ -17,7 +17,7 @@ place.forEach(e => {
             });
 
             let xhr = new XMLHttpRequest();
-            xhr.open("POST", "/assets/php/Place.php");
+            xhr.open("POST", "ajax/hall/place");
             xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
             xhr.responseType = 'json';
             xhr.send(json);
@@ -44,7 +44,7 @@ place.forEach(e => {
 });
 
 function img_place(status, e) {
-    e.setAttribute('src', 'assets/img/svg/chair_' + status + '.svg');
+    e.setAttribute('src', 'app/public/img/svg/chair_' + status + '.svg');
 }
 
 function append(elem, text, setTime = '') {

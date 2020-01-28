@@ -9,15 +9,10 @@ use PDO;
 
 class Hall extends Basic
 {
+
     public function __construct($DB)
     {
         parent::__construct($DB);
-    }
-
-    function ff()
-    {
-        $data['content'] = Router::render('hall/hall', $this->index());
-        return $data;
     }
 
     public function index()
@@ -48,7 +43,8 @@ class Hall extends Basic
                 }
             }
         }
-        return ['halls' => $halls, 'place_available' => $place_available];
+        $data['content'] = Router::render('hall/hall', ['halls' => $halls, 'place_available' => $place_available]);
+        return $data;
     }
 
     function place($place_available = NULL)

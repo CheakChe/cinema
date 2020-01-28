@@ -6,8 +6,9 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?= $var['title'] ?></title>
-    <link rel="stylesheet" href="/app/public/css/reset.min.css">
-    <link rel="stylesheet" href="/app/public/css/style.css">
+    <? foreach ($var['styles'] as $key => $style): ?>
+        <link rel="stylesheet" href="/app/public/css/<?= $style ?>.css">
+    <? endforeach; ?>
 </head>
 <body>
 <header>
