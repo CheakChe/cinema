@@ -1,5 +1,6 @@
 <?php
 
+use App\Core\Model;
 use App\Core\Router;
 
 //Начало сессии
@@ -11,5 +12,6 @@ $_SESSION['DB']['dns'] = $_SESSION['DB']['DB_CONNECTION'] . ':dbname=' . $_SESSI
 //Создание объекта БД
 $DB = new PDO($_SESSION['DB']['dns'], $_SESSION['DB']['DB_USERNAME'], $_SESSION['DB']['DB_PASSWORD']);
 
+$model = new Model();
 $router = new Router($DB);
 $router->index();

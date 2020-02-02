@@ -7,17 +7,16 @@ use App\Core\Router;
 
 class Basic
 {
-    protected $db;
-
-    public function __construct($DB)
+    public function __construct()
     {
-        $this->db = $DB;
+
     }
 
     public function index()
     {
         $data['header'] = Router::render('default/header',
-            ['title' => 'My page',
+            [
+                'title' => 'My page',
                 'styles' => [
                     'style',
                     'reset.min'

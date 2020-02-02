@@ -40,12 +40,12 @@ class Router
             $class = 'App\\Components\\' . $class . '\\' . $class;
 
             if ($this->url[1] == 'ajax') {
-                $class = new $class($this->db);
+                $class = new $class();
                 $class->$method($vars);
             } else {
-                $basic = new Basic($this->db);
+                $basic = new Basic();
                 $basic = $basic->index();
-                $class = new $class($this->db);
+                $class = new $class();
                 $class = $class->$method($vars);
                 $this->view([$basic, $class]);
             }

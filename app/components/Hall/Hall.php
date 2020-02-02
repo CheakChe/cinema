@@ -5,21 +5,22 @@ namespace App\Components\Hall;
 
 use App\Components\Basic\Basic;
 use App\Core\Router;
+use App\Models\Hall as Halls;
 use PDO;
 
 class Hall extends Basic
 {
+    private $model;
 
-    public function __construct($DB)
+    public function __construct()
     {
-        parent::__construct($DB);
+        $this->model = new Halls();
     }
 
     public function index()
     {
         //Находим и получаем залы кинотеатра
-        $halls = $this->db->query("SELECT *  FROM `halls` WHERE `active`='1'");
-        $halls = $halls->fetchAll(PDO::FETCH_ASSOC);
+        $halls = $this->model->Halls();
         foreach ($halls as $key => $hall) {
             //Создаем в массиве залов подмассив со списом мест
             $halls[$key]['hall'] = $this->db->query("SELECT `place`, `status` FROM `hall` WHERE `hall_id`={$hall['id']} ORDER BY `place`");
