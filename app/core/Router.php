@@ -8,11 +8,9 @@ use App\Components\Basic\Basic;
 class Router
 {
     private $url;
-    private $db;
 
-    public function __construct($DB)
+    public function __construct()
     {
-        $this->db = $DB;
         $this->url = explode('/', $_SERVER['REQUEST_URI']);
     }
 

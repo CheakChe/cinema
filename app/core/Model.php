@@ -5,19 +5,32 @@ namespace App\Core;
 
 
 use PDO;
+use PDOException;
 
 class Model
 {
     private $db;
 
-    function __construct()
+    public function __construct()
     {
-        $this->db = new PDO($_SESSION['DB']['dns'], $_SESSION['DB']['DB_USERNAME'], $_SESSION['DB']['DB_PASSWORD']);
+        try {
+            $DB = parse_ini_file('DB.ini');
+            $DB['dns'] = $DB['DB_CONNECTION'] . ':dbname=' . $DB['DB_DATABASE'] . ';host=' . $DB['DB_HOST'];
+            $this->db = new PDO($DB['dns'], $DB['DB_USERNAME'], $DB['DB_PASSWORD']);
+        } catch (PDOException $exception) {
+            die('Fatal connection — ' . $exception->getMessage());
+        }
     }
 
-    function fetch_assoc($query)
+    protected function fetch_assoc($query)
     {
-        $query = $this->db->query($query);
-        return $query->fetchAll(PDO::FETCH_ASSOC);
+
+
+//        try {
+//            $query = $this->db->query($query);
+//        }catch (PDOException $exception){
+//            die('Fatal error — '.$exception->getMessage());
+//        }
+//        return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 }

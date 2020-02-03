@@ -8,10 +8,6 @@ use App\Core\Model;
 
 class Hall extends Model
 {
-    function __construct()
-    {
-
-    }
 
     function Halls()
     {
