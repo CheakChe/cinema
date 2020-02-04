@@ -24,13 +24,11 @@ class Model
 
     protected function fetch_assoc($query)
     {
-
-
-//        try {
-//            $query = $this->db->query($query);
-//        }catch (PDOException $exception){
-//            die('Fatal error — '.$exception->getMessage());
-//        }
-//        return $query->fetchAll(PDO::FETCH_ASSOC);
+        try {
+            $fetch_assoc = $this->db->query($query);
+        } catch (PDOException $exception) {
+            die('Fatal error — ' . $exception->getMessage());
+        }
+        return $fetch_assoc->fetchAll(PDO::FETCH_ASSOC);
     }
 }
