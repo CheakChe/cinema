@@ -1,3 +1,5 @@
-<?= htmlspecialchars_decode($vars['header']) ?>
-<?= htmlspecialchars_decode($vars['content']) ?>
-<?= htmlspecialchars_decode($vars['footer']) ?>
+<?= $vars['header'] ?>
+<main <?=($_SERVER['REQUEST_URI'] !=='/')?'class="pt"': ''?>>
+    <?= $vars['content'] ?>
+</main>
+<?= $vars['footer'] ?>

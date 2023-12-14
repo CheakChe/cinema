@@ -1,11 +1,8 @@
 <?php
 
-use App\Core\Model;
-use App\Core\Router;
+    use App\Core\Router;
 
-//Начало сессии
-session_start();
+    session_start();
+    (new Router())->init();
+    session_write_close();
 
-$model = new Model();
-$router = new Router();
-$router->index();

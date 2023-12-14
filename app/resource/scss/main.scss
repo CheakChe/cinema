@@ -1,0 +1,320 @@
+/*TODO BASIC*/
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+li {
+  list-style: none;
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background: #f7f7f7;
+
+}
+
+/* Стили для шапки */
+header, footer {
+  width: 100%;
+  margin: 0 auto;
+}
+
+header {
+  border-top: 1px solid silver;
+  border-bottom: 1px solid black;
+}
+
+
+button {
+  background: none;
+  border: none;
+}
+
+button:hover {
+  filter: brightness(.9);
+}
+
+.position {
+  max-width: 1320px;
+  margin: auto;
+}
+
+.font-family, p, a, h1, h2, h3, h4, button, td {
+  font-family: 'Montserrat', sans-serif;
+}
+
+p, a, h1, h2, h3, h4, button {
+  color: #fff
+}
+
+.pt {
+  padding-top: 95px;
+}
+
+.error p {
+  margin-top: 50px;
+  color: #000;
+}
+
+.error {
+  text-align: center;
+}
+
+//HIDE ARROWS IN INPUT NUMBER
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+button:focus {
+  outline: none !important;
+}
+
+/*BASIC END*/
+
+
+/*SLIDER*/
+.slider {
+  position: relative;
+
+  & .slider__prev img {
+    transform: scale(-1, 1);
+  }
+
+  & .slider__arrow img {
+    width: 50px
+  }
+
+  & .slider__arrow {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  & .slider__items img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+  }
+
+  & .slider__arrow button {
+    position: relative;
+    transition: .5s;
+    cursor: pointer;
+    z-index: 3;
+  }
+
+  & .slider__next {
+    margin-right: 20px;
+  }
+
+  & .slider__prev {
+    margin-left: 20px;
+  }
+
+  & .slider__prev:hover {
+    transform: translateX(-10px);
+  }
+
+  & .slider__next:hover {
+    transform: translateX(10px);
+  }
+
+  & .slider__items {
+    position: relative;
+    z-index: 2;
+  }
+
+  & .slider__info {
+    position: relative;
+  }
+
+  & .slider__description {
+    position: absolute;
+    bottom: 0;
+    height: 100px;
+    background-color: #00000082;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/*SLIDER END*/
+
+/*FOOTER*/
+/*FOOTER END*/
+
+
+/*HEADER*/
+.header {
+  position: absolute;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, .9);
+  background-size: cover;
+
+  & .header__logo img {
+    max-width: 230px;
+    width: 100%
+  }
+
+  & .header__object,
+  & .header__left,
+  & .header__right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  & .header__object {
+    margin: 10px auto;
+  }
+
+  & .header__right div {
+    min-height: 25px
+  }
+
+  & .header__menu a,
+  & .header__right div {
+    margin: 0 5px;
+  }
+
+  & .header__search img {
+    width: 20px
+  }
+
+  & .header__search button {
+    border: none;
+  }
+}
+
+
+/*HEADER END*/
+
+/*CATALOG*/
+.catalog {
+
+  & .catalog__items {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  & h2 {
+    color: #000;
+    margin: 20px 0;
+  }
+}
+
+/*CATALOG END*/
+
+//TODO AUTH
+.auth {
+
+  & .auth__registration,
+  & .auth__enter,
+  & .auth__down {
+    transition: .5s;
+  }
+
+  & .hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  & input {
+    border: 1px solid #c5c3c3;
+    border-radius: 5px;
+    padding: 10px 5px;
+    margin-bottom: 10px;
+    max-width: 300px;
+  }
+
+  & button {
+    max-width: 217px;
+    width: 100%;
+  }
+
+  & .auth__enter form,
+  & .auth__registration form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  & .message {
+    color: red;
+  }
+}
+
+//AUTH END
+
+
+//TODO PRODUCT
+.product {
+
+  & p, & h1 {
+    color: #000;
+  }
+
+  & .cursor-not-allows {
+    cursor: not-allowed;
+  }
+  & .select-place{
+    opacity: .5;
+    background: #95c870c9;
+  }
+  & .places{
+    max-width: 200px;
+  }
+}
+
+//PRODUCT END
+
+//TODO ACCOUNT
+.account{
+
+  & p,
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & a{
+    color: #000;
+  }
+  & .history table{
+    table-layout: fixed;
+    text-align: center;
+    border-spacing: 5px;
+    border-collapse: separate;
+  }
+}
+//ACCOUNT END
+
+/*MEDIA*/
+@media (max-width: 1320px) {
+  .position {
+    margin: auto 20px;
+  }
+}
+
+/*MEDIA END*/

@@ -1,15 +1,10 @@
 {
-  "name": "cheak/cinema",
-  "description": "website cinema",
-  "authors": [
-    {
-      "name": "CheakChe",
-      "email": "saumonminiball@gmail.com"
-    }
-  ],
+  "name": "cheak/cinema-by-slavik",
+  "license": "no license",
+  "description": "Cinema by Slavik",
   "autoload": {
     "psr-4": {
-      "App\\": "app"
+      "App\\": "app/"
     }
   },
   "require": {
